@@ -1,24 +1,27 @@
+import 'react-native-gesture-handler';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { ScreenName } from './shared/enums/ScreenName.enum';
+import { Home, QuickTab } from './screens';
+
+const { Navigator, Screen } = createStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.button}>Two Big buttons here that show options.</Text>
-      <Text style={styles.button}>Quick Tab</Text>
-      <Text style={styles.button}>Start Tab</Text>
-    </View>
+    <NavigationContainer>
+      <Navigator>
+        <Screen
+          name={ScreenName.HomeScreen}
+          component={Home}
+          options={{title: 'Home Screen'}}
+        />
+        <Screen
+          name={ScreenName.QuickTabScreen}
+          component={QuickTab}
+          options={{title: 'Quick Tab'}}
+        />
+      </Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#5ea5d1',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  button: {
-    color: 'white'
-  }
-});
