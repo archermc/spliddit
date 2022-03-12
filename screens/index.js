@@ -1,2 +1,2 @@
-export { Home } from './Home';
+export { Home } from './Home/Home';
 export { QuickTab } from './QuickTab';
